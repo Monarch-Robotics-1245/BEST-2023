@@ -8,33 +8,16 @@ Modes:
 
 Motor Ports:
 1  - 
-2  - 
-3  - Large 1
-4  - Large 2
-5  - Small 1
-6  - Small 2
-7  - Servo 1
-8  - Servo 2
-9  - Servo 3
-10 - Servo 4
+2  - Large 1 ()
+3  - Large 2 ()
+4  - Small 1 ()
+5  - Small 2 ()
+6  - Servo 1 ()
+7  - Servo 2 ()
+8  - 
+9  - 
+10 - 
 
-Joystick Mapping:
-Bumper   Left  Top    - 
-Bumper   Left  Bottom - 
-Bumper   Right Top    - 
-Bumper   Right Bottom - 
-Gamepad  Left  Top    -
-Gamepad  Left  Bottom - 
-Gamepad  Left  Right  - 
-Gamepad  Left  Left   - 
-Gamepad  Right Top    -
-Gamepad  Right Bottom - 
-Gamepad  Right Right  - 
-Gamepad  Right Left   - 
-Joystick Left  X RL   - 
-Joystick Left  Y UD   - 
-Joystick Right X RL   - 
-Joystick Right Y UD   - 
 
 Input Ports
 Analog  1  - 
@@ -45,12 +28,12 @@ Analog  5  -
 Analog  6  - 
 Analog  7  - 
 Analog  8  - 
-Digital 1  - 
-Digital 2  - 
-Digital 3  - 
-Digital 4  - 
-Digital 5  - 
-Digital 6  - 
+Digital 1  - IR Sensor Left
+Digital 2  - IR Sensor Middle
+Digital 3  - IR Sensor Right
+Digital 4  - Limit Switch Brain
+Digital 5  - Limit Switch Upper
+Digital 6  - Limit Switch Lower
 Digital 7  - 
 Digital 8  - 
 Digital 9  - 
