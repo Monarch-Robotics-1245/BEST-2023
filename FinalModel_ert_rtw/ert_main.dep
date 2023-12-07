@@ -1,0 +1,38 @@
+ert_main.o: \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/ert_main.c \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rtwtypes.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_DigitalIn_Wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rtwtypes.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/vex_competition_switch.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_GamepadButton_Wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_GamepadAccel_Wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_DCMotor_Wrapper.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel_types.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rt_nonfinite.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel_private.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_target_hardware_resources.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rtwtypes.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_DigitalIn_Wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rtwtypes.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/vex_competition_switch.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_GamepadButton_Wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_GamepadAccel_Wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/include/MW_DCMotor_Wrapper.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel_types.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/rt_nonfinite.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/FinalModel_private.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_target_hardware_resources.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h:

@@ -1,0 +1,6 @@
+initializeIO.o: \
+ C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/vexarmcortex/src/initializeIO.c \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h:

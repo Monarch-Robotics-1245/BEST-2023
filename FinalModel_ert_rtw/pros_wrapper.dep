@@ -1,0 +1,16 @@
+pros_wrapper.o: \
+ C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/vexarmcortex/pros_rtos/src/pros_wrapper.c \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_target_hardware_resources.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h \
+ C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h \
+ C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_custom_RTOS_header.h
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_rtos_init.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/API.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_target_hardware_resources.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/3P778C~1.INS/PROS-L~1.INS/include/main.h:
+C:/PROGRA~3/MATLAB/SUPPOR~1/R2023b/toolbox/target/SUPPOR~1/VEXARM~1/PROS_R~1/include/pros_wrapper.h:
+C:/Users/MONARC~1/DOCUME~1/BEST-R~1/FinalModel_ert_rtw/MW_custom_RTOS_header.h:
