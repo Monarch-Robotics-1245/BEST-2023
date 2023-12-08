@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.49
+ * Model version                  : 1.54
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 13:42:45 2023
+ * C/C++ source code generated on : Thu Dec  7 18:27:19 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -816,21 +816,23 @@ void FinalModel_step(void)
     } else if ((FinalModel_B.DigitalInput2 == 1.0) &&
                (FinalModel_B.DigitalInput1 == 0.0) && (FinalModel_B.DigitalInput
                 == 0.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.5;
-      rtb_left_motor = FinalModel_P.Constant_Value_f / 1.5;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
+      rtb_left_motor = FinalModel_P.Constant_Value_f;
     } else if ((FinalModel_B.DigitalInput2 == 1.0) &&
                (FinalModel_B.DigitalInput1 == 1.0) && (FinalModel_B.DigitalInput
                 == 0.0)) {
-      rtb_left_motor = FinalModel_P.Constant_Value_f / 1.5;
+      rtb_MultiportSwitch6 = -FinalModel_P.Constant_Value_f / 2.0;
+      rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
     } else if ((FinalModel_B.DigitalInput2 == 0.0) &&
                (FinalModel_B.DigitalInput1 == 0.0) && (FinalModel_B.DigitalInput
                 == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 1.5;
-      rtb_left_motor = FinalModel_P.Constant_Value_f / 2.5;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f;
+      rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
     } else if ((FinalModel_B.DigitalInput2 == 0.0) &&
                (FinalModel_B.DigitalInput1 == 1.0) && (FinalModel_B.DigitalInput
                 == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 1.5;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
+      rtb_left_motor = -FinalModel_P.Constant_Value_f / 2.0;
     }
   }
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.49
+ * Model version                  : 1.54
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 13:42:45 2023
+ * C/C++ source code generated on : Thu Dec  7 18:27:19 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -184,7 +184,7 @@ struct P_FinalModel_T_ {
   real_T Constant2_Value_e;            /* Expression: 4
                                         * Referenced by: '<S6>/Constant2'
                                         */
-  real_T Constant5_Value_n;            /* Expression: 4
+  real_T Constant5_Value_n;            /* Expression: 1
                                         * Referenced by: '<S6>/Constant5'
                                         */
   real_T Constant_Value;               /* Expression: 1
@@ -280,7 +280,7 @@ struct P_FinalModel_T_ {
   real_T Constant4_Value_p;            /* Expression: 1
                                         * Referenced by: '<S1>/Constant4'
                                         */
-  real_T Constant_Value_f;             /* Expression: 60
+  real_T Constant_Value_f;             /* Expression: 40
                                         * Referenced by: '<S1>/Constant'
                                         */
   real_T Constant1_Value_j;            /* Expression: 30
