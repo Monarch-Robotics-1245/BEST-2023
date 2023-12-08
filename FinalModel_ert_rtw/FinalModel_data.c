@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.54
+ * Model version                  : 1.55
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 18:27:19 2023
+ * C/C++ source code generated on : Thu Dec  7 18:59:48 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -346,10 +346,10 @@ P_FinalModel_T FinalModel_P = {
    */
   40.0,
 
-  /* Expression: 30
+  /* Expression: 45
    * Referenced by: '<S1>/Constant1'
    */
-  30.0,
+  45.0,
 
   /* Expression: 3
    * Referenced by: '<Root>/Constant15'

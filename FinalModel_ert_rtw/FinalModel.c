@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.54
+ * Model version                  : 1.55
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 18:27:19 2023
+ * C/C++ source code generated on : Thu Dec  7 18:59:48 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -804,6 +804,8 @@ void FinalModel_step(void)
   /* MATLAB Function: '<S1>/MATLAB Function1' incorporates:
    *  Constant: '<Root>/Constant15'
    *  Constant: '<S1>/Constant'
+   *  Constant: '<S1>/Constant1'
+   *  Delay: '<S1>/Delay'
    *  Sum: '<Root>/Subtract'
    */
   rtb_MultiportSwitch6 = 0.0;
@@ -833,6 +835,20 @@ void FinalModel_step(void)
                 == 1.0)) {
       rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
       rtb_left_motor = -FinalModel_P.Constant_Value_f / 2.0;
+    } else if (FinalModel_DW.Delay_DSTATE < 50.0) {
+      rtb_left_motor = FinalModel_P.Constant1_Value_j;
+      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
+    } else if ((FinalModel_DW.Delay_DSTATE >= 50.0) &&
+               (FinalModel_DW.Delay_DSTATE < 150.0)) {
+      rtb_left_motor = -FinalModel_P.Constant1_Value_j;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant1_Value_j;
+    } else if ((FinalModel_DW.Delay_DSTATE >= 150.0) &&
+               (FinalModel_DW.Delay_DSTATE < 200.0)) {
+      rtb_left_motor = FinalModel_P.Constant1_Value_j;
+      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
+    } else {
+      rtb_left_motor = -FinalModel_P.Constant1_Value_j;
+      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
     }
   }
 
