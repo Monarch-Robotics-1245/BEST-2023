@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.55
+ * Model version                  : 1.59
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 18:59:48 2023
+ * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -782,39 +782,71 @@ void FinalModel_step(void)
       tmp_3 = FinalModel_P.Constant8_Value_l;
     }
 
-    /* Switch: '<S1>/Switch' incorporates:
-     *  Constant: '<S1>/Constant5'
-     *  Constant: '<S1>/Constant6'
-     *  Delay: '<S1>/Delay'
-     *  Logic: '<S1>/AND'
+    /* Logic: '<S1>/AND' incorporates:
      *  Logic: '<S1>/NOT'
-     *  Sum: '<S1>/Add'
      *  Switch: '<S1>/Switch1'
      *  Switch: '<S1>/Switch2'
      */
-    if ((!tmp_1) && tmp_3) {
-      FinalModel_DW.Delay_DSTATE += FinalModel_P.Constant6_Value;
-    } else {
-      FinalModel_DW.Delay_DSTATE = FinalModel_P.Constant5_Value;
-    }
-
-    /* End of Switch: '<S1>/Switch' */
+    FinalModel_B.AND = ((!tmp_1) && tmp_3);
   }
 
-  /* MATLAB Function: '<S1>/MATLAB Function1' incorporates:
+  /* Sum: '<Root>/Subtract' incorporates:
    *  Constant: '<Root>/Constant15'
+   */
+  rtb_Switch3 = FinalModel_B.MinMax - FinalModel_P.Constant15_Value;
+
+  /* Switch: '<S1>/Switch3' incorporates:
+   *  Constant: '<S1>/Constant10'
+   *  Constant: '<S1>/Constant9'
+   */
+  if (rtb_Switch3 > FinalModel_P.Switch3_Threshold_o) {
+    tmp_1 = FinalModel_P.Constant9_Value_p;
+  } else {
+    tmp_1 = FinalModel_P.Constant10_Value_c;
+  }
+
+  /* Switch: '<S1>/Switch4' incorporates:
+   *  Constant: '<S1>/Constant10'
+   *  Constant: '<S1>/Constant9'
+   */
+  if (rtb_Switch3 >= FinalModel_P.Switch4_Threshold_l) {
+    tmp_3 = FinalModel_P.Constant9_Value_p;
+  } else {
+    tmp_3 = FinalModel_P.Constant10_Value_c;
+  }
+
+  /* Switch: '<S1>/Switch' incorporates:
+   *  Constant: '<S1>/Constant5'
+   *  Constant: '<S1>/Constant6'
+   *  Delay: '<S1>/Delay'
+   *  Logic: '<S1>/AND1'
+   *  Logic: '<S1>/AND2'
+   *  Logic: '<S1>/NOT1'
+   *  Sum: '<S1>/Add'
+   *  Switch: '<S1>/Switch3'
+   *  Switch: '<S1>/Switch4'
+   */
+  if (FinalModel_B.AND && ((!tmp_1) && tmp_3)) {
+    FinalModel_DW.Delay_DSTATE += FinalModel_P.Constant6_Value;
+  } else {
+    FinalModel_DW.Delay_DSTATE = FinalModel_P.Constant5_Value;
+  }
+
+  /* End of Switch: '<S1>/Switch' */
+
+  /* MATLAB Function: '<S1>/MATLAB Function1' incorporates:
    *  Constant: '<S1>/Constant'
    *  Constant: '<S1>/Constant1'
+   *  Constant: '<S1>/Constant11'
    *  Delay: '<S1>/Delay'
-   *  Sum: '<Root>/Subtract'
    */
   rtb_MultiportSwitch6 = 0.0;
   rtb_left_motor = 0.0;
-  if (FinalModel_B.MinMax - FinalModel_P.Constant15_Value == 0.0) {
+  if (rtb_Switch3 == 0.0) {
     if ((FinalModel_B.DigitalInput2 == 1.0) && (FinalModel_B.DigitalInput1 ==
          0.0) && (FinalModel_B.DigitalInput == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f;
-      rtb_left_motor = FinalModel_P.Constant_Value_f;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant11_Value_k;
+      rtb_left_motor = FinalModel_P.Constant11_Value_k;
     } else if ((FinalModel_B.DigitalInput2 == 1.0) &&
                (FinalModel_B.DigitalInput1 == 0.0) && (FinalModel_B.DigitalInput
                 == 0.0)) {
@@ -835,15 +867,15 @@ void FinalModel_step(void)
                 == 1.0)) {
       rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
       rtb_left_motor = -FinalModel_P.Constant_Value_f / 2.0;
-    } else if (FinalModel_DW.Delay_DSTATE < 50.0) {
+    } else if (FinalModel_DW.Delay_DSTATE < 25.0) {
       rtb_left_motor = FinalModel_P.Constant1_Value_j;
       rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
-    } else if ((FinalModel_DW.Delay_DSTATE >= 50.0) &&
-               (FinalModel_DW.Delay_DSTATE < 150.0)) {
+    } else if ((FinalModel_DW.Delay_DSTATE >= 25.0) &&
+               (FinalModel_DW.Delay_DSTATE < 75.0)) {
       rtb_left_motor = -FinalModel_P.Constant1_Value_j;
       rtb_MultiportSwitch6 = FinalModel_P.Constant1_Value_j;
-    } else if ((FinalModel_DW.Delay_DSTATE >= 150.0) &&
-               (FinalModel_DW.Delay_DSTATE < 200.0)) {
+    } else if ((FinalModel_DW.Delay_DSTATE >= 75.0) &&
+               (FinalModel_DW.Delay_DSTATE < 100.0)) {
       rtb_left_motor = FinalModel_P.Constant1_Value_j;
       rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
     } else {

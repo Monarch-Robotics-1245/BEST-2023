@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.55
+ * Model version                  : 1.59
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 18:59:48 2023
+ * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -341,20 +341,25 @@ P_FinalModel_T FinalModel_P = {
    */
   1.0,
 
-  /* Expression: 40
+  /* Expression: 3
+   * Referenced by: '<Root>/Constant15'
+   */
+  3.0,
+
+  /* Expression: 60
    * Referenced by: '<S1>/Constant'
    */
-  40.0,
+  60.0,
 
   /* Expression: 45
    * Referenced by: '<S1>/Constant1'
    */
   45.0,
 
-  /* Expression: 3
-   * Referenced by: '<Root>/Constant15'
+  /* Expression: 60
+   * Referenced by: '<S1>/Constant11'
    */
-  3.0,
+  60.0,
 
   /* Expression: 3
    * Referenced by: '<S1>/Switch1'
@@ -365,6 +370,16 @@ P_FinalModel_T FinalModel_P = {
    * Referenced by: '<S1>/Switch2'
    */
   3.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Switch3'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Switch4'
+   */
+  0.0,
 
   /* Expression: 0.0
    * Referenced by: '<S1>/Delay'
@@ -447,6 +462,16 @@ P_FinalModel_T FinalModel_P = {
 
   /* Expression: false
    * Referenced by: '<S1>/Constant8'
+   */
+  false,
+
+  /* Expression: true
+   * Referenced by: '<S1>/Constant9'
+   */
+  true,
+
+  /* Expression: false
+   * Referenced by: '<S1>/Constant10'
    */
   false,
 

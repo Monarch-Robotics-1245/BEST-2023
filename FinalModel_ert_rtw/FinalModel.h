@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.55
+ * Model version                  : 1.59
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu Dec  7 18:59:48 2023
+ * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -57,6 +57,7 @@ typedef struct {
   real_T DigitalInput;                 /* '<S1>/Digital Input' */
   real_T rtb_GamepadJoystick1_m;
   real_T MinMax;                       /* '<S6>/MinMax' */
+  boolean_T AND;                       /* '<S1>/AND' */
 } B_FinalModel_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -280,20 +281,29 @@ struct P_FinalModel_T_ {
   real_T Constant4_Value_p;            /* Expression: 1
                                         * Referenced by: '<S1>/Constant4'
                                         */
-  real_T Constant_Value_f;             /* Expression: 40
+  real_T Constant15_Value;             /* Expression: 3
+                                        * Referenced by: '<Root>/Constant15'
+                                        */
+  real_T Constant_Value_f;             /* Expression: 60
                                         * Referenced by: '<S1>/Constant'
                                         */
   real_T Constant1_Value_j;            /* Expression: 45
                                         * Referenced by: '<S1>/Constant1'
                                         */
-  real_T Constant15_Value;             /* Expression: 3
-                                        * Referenced by: '<Root>/Constant15'
+  real_T Constant11_Value_k;           /* Expression: 60
+                                        * Referenced by: '<S1>/Constant11'
                                         */
   real_T Switch1_Threshold_n;          /* Expression: 3
                                         * Referenced by: '<S1>/Switch1'
                                         */
   real_T Switch2_Threshold_k;          /* Expression: 3
                                         * Referenced by: '<S1>/Switch2'
+                                        */
+  real_T Switch3_Threshold_o;          /* Expression: 0
+                                        * Referenced by: '<S1>/Switch3'
+                                        */
+  real_T Switch4_Threshold_l;          /* Expression: 0
+                                        * Referenced by: '<S1>/Switch4'
                                         */
   real_T Delay_InitialCondition;       /* Expression: 0.0
                                         * Referenced by: '<S1>/Delay'
@@ -342,6 +352,12 @@ struct P_FinalModel_T_ {
                                         */
   boolean_T Constant8_Value_l;         /* Expression: false
                                         * Referenced by: '<S1>/Constant8'
+                                        */
+  boolean_T Constant9_Value_p;         /* Expression: true
+                                        * Referenced by: '<S1>/Constant9'
+                                        */
+  boolean_T Constant10_Value_c;        /* Expression: false
+                                        * Referenced by: '<S1>/Constant10'
                                         */
   P_Chart_FinalModel_T sf_Chart_j;     /* '<S8>/Chart' */
   P_Chart_FinalModel_T sf_Chart;       /* '<S3>/Chart' */
