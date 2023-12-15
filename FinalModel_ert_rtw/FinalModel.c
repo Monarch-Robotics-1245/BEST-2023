@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.65
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
+ * C/C++ source code generated on : Thu Dec 14 19:41:36 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -116,13 +116,14 @@ void FinalModel_step(void)
 {
   real_T rtb_Direction;
   real_T rtb_MultiportSwitch6;
+  real_T rtb_Sum;
   real_T rtb_Switch3;
   real_T rtb_left_motor;
-  real_T tmp;
   real_T y;
-  int32_T tmp_0;
+  int32_T tmp;
   uint8_T b_varargout_1;
   uint8_T b_varargout_2;
+  boolean_T tmp_0;
   boolean_T tmp_1;
   boolean_T tmp_2;
   boolean_T tmp_3;
@@ -134,10 +135,10 @@ void FinalModel_step(void)
   rtb_MultiportSwitch6 = joystickGetDigital(1, 7, 8);
 
   /* MATLABSystem: '<Root>/Gamepad Button6' */
-  rtb_left_motor = joystickGetDigital(1, 7, 2);
+  rtb_Switch3 = joystickGetDigital(1, 7, 2);
 
   /* MATLABSystem: '<Root>/Gamepad Button4' */
-  rtb_Switch3 = joystickGetDigital(1, 7, 1);
+  rtb_Direction = joystickGetDigital(1, 7, 1);
 
   /* MinMax: '<S7>/MinMax2' incorporates:
    *  MATLABSystem: '<Root>/Gamepad Button4'
@@ -147,16 +148,16 @@ void FinalModel_step(void)
    *  MinMax: '<S7>/MinMax3'
    *  MinMax: '<S7>/MinMax4'
    */
-  tmp_1 = rtIsNaN(rtb_left_motor);
-  if ((rtb_MultiportSwitch6 >= rtb_left_motor) || tmp_1) {
+  tmp_1 = rtIsNaN(rtb_Switch3);
+  if ((rtb_MultiportSwitch6 >= rtb_Switch3) || tmp_1) {
     y = rtb_MultiportSwitch6;
   } else {
-    y = rtb_left_motor;
+    y = rtb_Switch3;
   }
 
-  tmp_3 = !rtIsNaN(rtb_Switch3);
-  if ((!(y >= rtb_Switch3)) && tmp_3) {
-    y = rtb_Switch3;
+  tmp_3 = !rtIsNaN(rtb_Direction);
+  if ((!(y >= rtb_Direction)) && tmp_3) {
+    y = rtb_Direction;
   }
 
   /* Switch: '<S6>/Switch' incorporates:
@@ -176,14 +177,14 @@ void FinalModel_step(void)
    *  MATLABSystem: '<Root>/Gamepad Button5'
    *  MATLABSystem: '<Root>/Gamepad Button6'
    */
-  if ((FinalModel_B.MinMax >= rtb_left_motor) || tmp_1) {
+  if ((FinalModel_B.MinMax >= rtb_Switch3) || tmp_1) {
     y = FinalModel_B.MinMax;
   } else {
-    y = rtb_left_motor;
+    y = rtb_Switch3;
   }
 
-  if ((!(y >= rtb_Switch3)) && tmp_3) {
-    y = rtb_Switch3;
+  if ((!(y >= rtb_Direction)) && tmp_3) {
+    y = rtb_Direction;
   }
 
   /* Switch: '<S6>/Switch1' incorporates:
@@ -212,8 +213,8 @@ void FinalModel_step(void)
     y = rtb_MultiportSwitch6;
   }
 
-  if ((!(y >= rtb_Switch3)) && tmp_3) {
-    y = rtb_Switch3;
+  if ((!(y >= rtb_Direction)) && tmp_3) {
+    y = rtb_Direction;
   }
 
   /* Switch: '<S6>/Switch2' incorporates:
@@ -225,7 +226,7 @@ void FinalModel_step(void)
    *  MinMax: '<S7>/MinMax3'
    */
   FinalModel_DW.Memory_PreviousInput_i = FinalModel_P.Logic_table_b[((((uint32_T)
-    (rtb_left_motor != 0.0) << 1) + (uint32_T)(y != 0.0)) << 1) +
+    (rtb_Switch3 != 0.0) << 1) + (uint32_T)(y != 0.0)) << 1) +
     FinalModel_DW.Memory_PreviousInput_i];
 
   /* MinMax: '<S7>/MinMax4' incorporates:
@@ -236,8 +237,8 @@ void FinalModel_step(void)
     rtb_MultiportSwitch6 = FinalModel_B.MinMax;
   }
 
-  if ((rtb_MultiportSwitch6 >= rtb_left_motor) || tmp_1) {
-    rtb_left_motor = rtb_MultiportSwitch6;
+  if ((rtb_MultiportSwitch6 >= rtb_Switch3) || tmp_1) {
+    rtb_Switch3 = rtb_MultiportSwitch6;
   }
 
   /* Switch: '<S6>/Switch3' incorporates:
@@ -249,7 +250,7 @@ void FinalModel_step(void)
    *  MinMax: '<S7>/MinMax4'
    */
   FinalModel_DW.Memory_PreviousInput_n = FinalModel_P.Logic_table_j[((((uint32_T)
-    (rtb_Switch3 != 0.0) << 1) + (uint32_T)(rtb_left_motor != 0.0)) << 1) +
+    (rtb_Direction != 0.0) << 1) + (uint32_T)(rtb_Switch3 != 0.0)) << 1) +
     FinalModel_DW.Memory_PreviousInput_n];
 
   /* Switch: '<S6>/Switch' incorporates:
@@ -257,9 +258,9 @@ void FinalModel_step(void)
    *  Constant: '<S6>/Constant4'
    */
   if (FinalModel_DW.Memory_PreviousInput) {
-    rtb_left_motor = FinalModel_P.Constant_Value;
+    rtb_MultiportSwitch6 = FinalModel_P.Constant_Value;
   } else {
-    rtb_left_motor = FinalModel_P.Constant4_Value;
+    rtb_MultiportSwitch6 = FinalModel_P.Constant4_Value;
   }
 
   /* Switch: '<S6>/Switch1' incorporates:
@@ -267,9 +268,9 @@ void FinalModel_step(void)
    *  Constant: '<S6>/Constant4'
    */
   if (FinalModel_DW.Memory_PreviousInput_a) {
-    rtb_MultiportSwitch6 = FinalModel_P.Constant1_Value;
+    rtb_Switch3 = FinalModel_P.Constant1_Value;
   } else {
-    rtb_MultiportSwitch6 = FinalModel_P.Constant4_Value;
+    rtb_Switch3 = FinalModel_P.Constant4_Value;
   }
 
   /* Switch: '<S6>/Switch2' incorporates:
@@ -277,9 +278,9 @@ void FinalModel_step(void)
    *  Constant: '<S6>/Constant4'
    */
   if (FinalModel_DW.Memory_PreviousInput_i) {
-    rtb_Switch3 = FinalModel_P.Constant3_Value;
+    rtb_Direction = FinalModel_P.Constant3_Value;
   } else {
-    rtb_Switch3 = FinalModel_P.Constant4_Value;
+    rtb_Direction = FinalModel_P.Constant4_Value;
   }
 
   /* Switch: '<S6>/Switch3' incorporates:
@@ -298,17 +299,16 @@ void FinalModel_step(void)
    *  Switch: '<S6>/Switch2'
    *  Switch: '<S6>/Switch3'
    */
-  if ((rtb_left_motor >= rtb_MultiportSwitch6) || rtIsNaN(rtb_MultiportSwitch6))
-  {
-    rtb_MultiportSwitch6 = rtb_left_motor;
-  }
-
   if ((rtb_MultiportSwitch6 >= rtb_Switch3) || rtIsNaN(rtb_Switch3)) {
     rtb_Switch3 = rtb_MultiportSwitch6;
   }
 
-  if ((rtb_Switch3 >= FinalModel_B.MinMax) || rtIsNaN(FinalModel_B.MinMax)) {
-    FinalModel_B.MinMax = rtb_Switch3;
+  if ((rtb_Switch3 >= rtb_Direction) || rtIsNaN(rtb_Direction)) {
+    rtb_Direction = rtb_Switch3;
+  }
+
+  if ((rtb_Direction >= FinalModel_B.MinMax) || rtIsNaN(FinalModel_B.MinMax)) {
+    FinalModel_B.MinMax = rtb_Direction;
   }
 
   /* End of MinMax: '<S6>/MinMax' */
@@ -352,14 +352,14 @@ void FinalModel_step(void)
     rtb_MultiportSwitch6 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_MultiportSwitch6);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_MultiportSwitch6);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(8, tmp_0);
+  motorSet(8, tmp);
 
   /* End of MATLABSystem: '<Root>/Servo Motor 3' */
 
@@ -393,14 +393,14 @@ void FinalModel_step(void)
     rtb_MultiportSwitch6 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_MultiportSwitch6);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_MultiportSwitch6);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(9, tmp_0);
+  motorSet(9, tmp);
 
   /* End of MATLABSystem: '<Root>/Servo Motor 4' */
 
@@ -408,10 +408,12 @@ void FinalModel_step(void)
   rtb_MultiportSwitch6 = joystickGetDigital(1, 5, 4);
 
   /* MATLABSystem: '<Root>/Gamepad Button1' */
-  rtb_left_motor = joystickGetDigital(1, 5, 1);
+  rtb_Switch3 = joystickGetDigital(1, 5, 1);
 
   /* MultiPortSwitch: '<S2>/Multiport Switch2' incorporates:
    *  Constant: '<S2>/Idle'
+   *  Gain: '<S2>/Gain'
+   *  Switch: '<S4>/Switch11'
    */
   switch ((int32_T)FinalModel_B.MinMax) {
    case 1:
@@ -421,7 +423,7 @@ void FinalModel_step(void)
      *  Gain: '<S4>/Gain2'
      *  MATLABSystem: '<Root>/Gamepad Button1'
      */
-    if (rtb_left_motor > FinalModel_P.Switch3_Threshold) {
+    if (rtb_Switch3 > FinalModel_P.Switch3_Threshold) {
       rtb_Switch3 = FinalModel_P.Gain2_Gain * FinalModel_P.ToolDownSpeed_Value;
     } else {
       rtb_Switch3 = FinalModel_P.Constant3_Value_b;
@@ -435,16 +437,16 @@ void FinalModel_step(void)
      *  MATLABSystem: '<Root>/Gamepad Button'
      */
     if (rtb_MultiportSwitch6 > FinalModel_P.Switch2_Threshold) {
-      rtb_left_motor = FinalModel_P.ToolUpSpeed_Value;
+      rtb_MultiportSwitch6 = FinalModel_P.ToolUpSpeed_Value;
     } else {
-      rtb_left_motor = FinalModel_P.Constant3_Value_b;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant3_Value_b;
     }
 
     /* MinMax: '<S4>/Max2' incorporates:
      *  Switch: '<S4>/Switch2'
      */
-    if ((rtb_left_motor >= rtb_Switch3) || rtIsNaN(rtb_Switch3)) {
-      rtb_Switch3 = rtb_left_motor;
+    if ((rtb_MultiportSwitch6 >= rtb_Switch3) || rtIsNaN(rtb_Switch3)) {
+      rtb_Switch3 = rtb_MultiportSwitch6;
     }
 
     /* End of MinMax: '<S4>/Max2' */
@@ -457,19 +459,19 @@ void FinalModel_step(void)
       rtb_Switch3 = FinalModel_P.Constant4_Value_i;
     }
 
-    /* End of Switch: '<S4>/Switch11' */
+    rtb_MultiportSwitch6 = FinalModel_P.Gain_Gain_a * rtb_Switch3;
     break;
 
    case 2:
-    rtb_Switch3 = 0.0;
+    rtb_MultiportSwitch6 = 0.0;
     break;
 
    case 3:
-    rtb_Switch3 = 0.0;
+    rtb_MultiportSwitch6 = 0.0;
     break;
 
    default:
-    rtb_Switch3 = FinalModel_P.Idle_Value;
+    rtb_MultiportSwitch6 = FinalModel_P.Idle_Value;
     break;
   }
 
@@ -488,20 +490,20 @@ void FinalModel_step(void)
     FinalModel_DW.obj_h.TunablePropsChanged = false;
   }
 
-  if (rtb_Switch3 > 127.0) {
-    rtb_Switch3 = 127.0;
-  } else if (rtb_Switch3 < -128.0) {
-    rtb_Switch3 = -128.0;
+  if (rtb_MultiportSwitch6 > 127.0) {
+    rtb_MultiportSwitch6 = 127.0;
+  } else if (rtb_MultiportSwitch6 < -128.0) {
+    rtb_MultiportSwitch6 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_Switch3);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_MultiportSwitch6);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(4, tmp_0);
+  motorSet(4, tmp);
 
   /* End of MATLABSystem: '<Root>/Small Motor 1' */
 
@@ -509,7 +511,7 @@ void FinalModel_step(void)
   rtb_MultiportSwitch6 = joystickGetDigital(1, 6, 4);
 
   /* MATLABSystem: '<Root>/Gamepad Button3' */
-  rtb_left_motor = joystickGetDigital(1, 6, 1);
+  rtb_Switch3 = joystickGetDigital(1, 6, 1);
 
   /* MultiPortSwitch: '<S2>/Multiport Switch3' incorporates:
    *  Constant: '<S2>/Idle'
@@ -522,7 +524,7 @@ void FinalModel_step(void)
      *  Gain: '<S4>/Gain3'
      *  MATLABSystem: '<Root>/Gamepad Button3'
      */
-    if (rtb_left_motor > FinalModel_P.Switch5_Threshold) {
+    if (rtb_Switch3 > FinalModel_P.Switch5_Threshold) {
       rtb_Switch3 = FinalModel_P.Gain3_Gain *
         FinalModel_P.GripperDownSpeed_Value;
     } else {
@@ -537,16 +539,16 @@ void FinalModel_step(void)
      *  MATLABSystem: '<Root>/Gamepad Button2'
      */
     if (rtb_MultiportSwitch6 > FinalModel_P.Switch4_Threshold) {
-      rtb_left_motor = FinalModel_P.GripperUpSpeed_Value;
+      rtb_MultiportSwitch6 = FinalModel_P.GripperUpSpeed_Value;
     } else {
-      rtb_left_motor = FinalModel_P.Constant3_Value_b;
+      rtb_MultiportSwitch6 = FinalModel_P.Constant3_Value_b;
     }
 
     /* MinMax: '<S4>/Max1' incorporates:
      *  Switch: '<S4>/Switch4'
      */
-    if ((rtb_left_motor >= rtb_Switch3) || rtIsNaN(rtb_Switch3)) {
-      rtb_Switch3 = rtb_left_motor;
+    if ((rtb_MultiportSwitch6 >= rtb_Switch3) || rtIsNaN(rtb_Switch3)) {
+      rtb_Switch3 = rtb_MultiportSwitch6;
     }
 
     /* End of MinMax: '<S4>/Max1' */
@@ -596,32 +598,32 @@ void FinalModel_step(void)
     rtb_Switch3 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_Switch3);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_Switch3);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(5, tmp_0);
+  motorSet(5, tmp);
 
   /* End of MATLABSystem: '<Root>/Small Motor 2' */
 
   /* MATLABSystem: '<Root>/Gamepad Button8' */
-  rtb_left_motor = joystickGetDigital(1, 8, 1);
+  rtb_MultiportSwitch6 = joystickGetDigital(1, 8, 1);
 
   /* MATLABSystem: '<Root>/Gamepad Button9' */
-  rtb_MultiportSwitch6 = joystickGetDigital(1, 8, 4);
+  rtb_Switch3 = joystickGetDigital(1, 8, 4);
 
   /* Switch: '<S4>/Switch6' incorporates:
    *  Constant: '<S4>/Constant5'
    *  Constant: '<S4>/Gripper C. Ammnt'
    *  MATLABSystem: '<Root>/Gamepad Button8'
    */
-  if (rtb_left_motor > FinalModel_P.Switch6_Threshold) {
-    rtb_left_motor = FinalModel_P.GripperCAmmnt_Value;
+  if (rtb_MultiportSwitch6 > FinalModel_P.Switch6_Threshold) {
+    rtb_MultiportSwitch6 = FinalModel_P.GripperCAmmnt_Value;
   } else {
-    rtb_left_motor = FinalModel_P.Constant5_Value_p;
+    rtb_MultiportSwitch6 = FinalModel_P.Constant5_Value_p;
   }
 
   /* Switch: '<S4>/Switch7' incorporates:
@@ -629,19 +631,19 @@ void FinalModel_step(void)
    *  Constant: '<S4>/Gripper O. Ammnt'
    *  MATLABSystem: '<Root>/Gamepad Button9'
    */
-  if (rtb_MultiportSwitch6 > FinalModel_P.Switch7_Threshold) {
-    rtb_MultiportSwitch6 = FinalModel_P.GripperOAmmnt_Value;
+  if (rtb_Switch3 > FinalModel_P.Switch7_Threshold) {
+    FinalModel_B.MultiportSwitch = FinalModel_P.GripperOAmmnt_Value;
   } else {
-    rtb_MultiportSwitch6 = FinalModel_P.Constant5_Value_p;
+    FinalModel_B.MultiportSwitch = FinalModel_P.Constant5_Value_p;
   }
 
   /* MinMax: '<S4>/Max' incorporates:
    *  Switch: '<S4>/Switch6'
    *  Switch: '<S4>/Switch7'
    */
-  if ((rtb_left_motor >= rtb_MultiportSwitch6) || rtIsNaN(rtb_MultiportSwitch6))
-  {
-    rtb_MultiportSwitch6 = rtb_left_motor;
+  if ((rtb_MultiportSwitch6 >= FinalModel_B.MultiportSwitch) || rtIsNaN
+      (FinalModel_B.MultiportSwitch)) {
+    FinalModel_B.MultiportSwitch = rtb_MultiportSwitch6;
   }
 
   /* End of MinMax: '<S4>/Max' */
@@ -650,8 +652,8 @@ void FinalModel_step(void)
    *  Abs: '<S4>/Abs4'
    *  Constant: '<S4>/Constant2'
    */
-  if (fabs(rtb_MultiportSwitch6) > FinalModel_P.Switch14_Threshold) {
-    rtb_MultiportSwitch6 = FinalModel_P.Constant2_Value;
+  if (fabs(FinalModel_B.MultiportSwitch) > FinalModel_P.Switch14_Threshold) {
+    FinalModel_B.MultiportSwitch = FinalModel_P.Constant2_Value;
   }
 
   /* End of Switch: '<S4>/Switch14' */
@@ -660,8 +662,8 @@ void FinalModel_step(void)
    *  Abs: '<S4>/Abs3'
    *  Delay: '<S4>/Delay1'
    */
-  if (fabs(rtb_MultiportSwitch6) > FinalModel_P.Switch13_Threshold) {
-    FinalModel_DW.Delay1_DSTATE = rtb_MultiportSwitch6;
+  if (fabs(FinalModel_B.MultiportSwitch) > FinalModel_P.Switch13_Threshold) {
+    FinalModel_DW.Delay1_DSTATE = FinalModel_B.MultiportSwitch;
   }
 
   /* End of Switch: '<S4>/Switch13' */
@@ -697,14 +699,14 @@ void FinalModel_step(void)
     rtb_MultiportSwitch6 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_MultiportSwitch6);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_MultiportSwitch6);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(6, tmp_0);
+  motorSet(6, tmp);
 
   /* End of MATLABSystem: '<Root>/Servo Motor 1' */
 
@@ -738,35 +740,38 @@ void FinalModel_step(void)
     rtb_MultiportSwitch6 = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_MultiportSwitch6);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_MultiportSwitch6);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(7, tmp_0);
+  motorSet(7, tmp);
 
   /* End of MATLABSystem: '<Root>/Servo Motor 2' */
   if (FinalModel_M->Timing.TaskCounters.TID[1] == 0) {
     /* MATLABSystem: '<S1>/Digital Input' */
-    FinalModel_B.DigitalInput = digitalRead(1);
+    rtb_MultiportSwitch6 = digitalRead(1);
 
     /* MATLABSystem: '<S1>/Digital Input1' */
-    FinalModel_B.DigitalInput1 = digitalRead(2);
+    rtb_Switch3 = digitalRead(2);
 
     /* MATLABSystem: '<S1>/Digital Input2' */
-    FinalModel_B.DigitalInput2 = digitalRead(3);
+    rtb_Direction = digitalRead(3);
 
-    /* Sum: '<S1>/Sum' */
-    rtb_MultiportSwitch6 = (FinalModel_B.DigitalInput +
-      FinalModel_B.DigitalInput1) + FinalModel_B.DigitalInput2;
+    /* Sum: '<S1>/Sum' incorporates:
+     *  MATLABSystem: '<S1>/Digital Input'
+     *  MATLABSystem: '<S1>/Digital Input1'
+     *  MATLABSystem: '<S1>/Digital Input2'
+     */
+    rtb_Sum = (rtb_MultiportSwitch6 + rtb_Switch3) + rtb_Direction;
 
     /* Switch: '<S1>/Switch1' incorporates:
      *  Constant: '<S1>/Constant7'
      *  Constant: '<S1>/Constant8'
      */
-    if (rtb_MultiportSwitch6 > FinalModel_P.Switch1_Threshold_n) {
+    if (rtb_Sum > FinalModel_P.Switch1_Threshold_n) {
       tmp_1 = FinalModel_P.Constant7_Value_j;
     } else {
       tmp_1 = FinalModel_P.Constant8_Value_l;
@@ -776,148 +781,138 @@ void FinalModel_step(void)
      *  Constant: '<S1>/Constant7'
      *  Constant: '<S1>/Constant8'
      */
-    if (rtb_MultiportSwitch6 >= FinalModel_P.Switch2_Threshold_k) {
+    if (rtb_Sum >= FinalModel_P.Switch2_Threshold_k) {
       tmp_3 = FinalModel_P.Constant7_Value_j;
     } else {
       tmp_3 = FinalModel_P.Constant8_Value_l;
     }
 
-    /* Logic: '<S1>/AND' incorporates:
+    /* Switch: '<S1>/Switch3' incorporates:
+     *  Constant: '<S1>/Constant10'
+     *  Constant: '<S1>/Constant12'
+     *  Constant: '<S1>/Constant9'
+     */
+    if (FinalModel_P.Constant12_Value_g > FinalModel_P.Switch3_Threshold_o) {
+      tmp_2 = FinalModel_P.Constant9_Value_p;
+    } else {
+      tmp_2 = FinalModel_P.Constant10_Value_c;
+    }
+
+    /* Switch: '<S1>/Switch4' incorporates:
+     *  Constant: '<S1>/Constant10'
+     *  Constant: '<S1>/Constant12'
+     *  Constant: '<S1>/Constant9'
+     */
+    if (FinalModel_P.Constant12_Value_g >= FinalModel_P.Switch4_Threshold_l) {
+      tmp_0 = FinalModel_P.Constant9_Value_p;
+    } else {
+      tmp_0 = FinalModel_P.Constant10_Value_c;
+    }
+
+    /* Switch: '<S1>/Switch' incorporates:
+     *  Constant: '<S1>/Constant5'
+     *  Constant: '<S1>/Constant6'
+     *  Delay: '<S1>/Delay'
+     *  Logic: '<S1>/AND'
+     *  Logic: '<S1>/AND1'
+     *  Logic: '<S1>/AND2'
      *  Logic: '<S1>/NOT'
+     *  Logic: '<S1>/NOT1'
+     *  Sum: '<S1>/Add'
      *  Switch: '<S1>/Switch1'
      *  Switch: '<S1>/Switch2'
+     *  Switch: '<S1>/Switch3'
+     *  Switch: '<S1>/Switch4'
      */
-    FinalModel_B.AND = ((!tmp_1) && tmp_3);
-  }
-
-  /* Sum: '<Root>/Subtract' incorporates:
-   *  Constant: '<Root>/Constant15'
-   */
-  rtb_Switch3 = FinalModel_B.MinMax - FinalModel_P.Constant15_Value;
-
-  /* Switch: '<S1>/Switch3' incorporates:
-   *  Constant: '<S1>/Constant10'
-   *  Constant: '<S1>/Constant9'
-   */
-  if (rtb_Switch3 > FinalModel_P.Switch3_Threshold_o) {
-    tmp_1 = FinalModel_P.Constant9_Value_p;
-  } else {
-    tmp_1 = FinalModel_P.Constant10_Value_c;
-  }
-
-  /* Switch: '<S1>/Switch4' incorporates:
-   *  Constant: '<S1>/Constant10'
-   *  Constant: '<S1>/Constant9'
-   */
-  if (rtb_Switch3 >= FinalModel_P.Switch4_Threshold_l) {
-    tmp_3 = FinalModel_P.Constant9_Value_p;
-  } else {
-    tmp_3 = FinalModel_P.Constant10_Value_c;
-  }
-
-  /* Switch: '<S1>/Switch' incorporates:
-   *  Constant: '<S1>/Constant5'
-   *  Constant: '<S1>/Constant6'
-   *  Delay: '<S1>/Delay'
-   *  Logic: '<S1>/AND1'
-   *  Logic: '<S1>/AND2'
-   *  Logic: '<S1>/NOT1'
-   *  Sum: '<S1>/Add'
-   *  Switch: '<S1>/Switch3'
-   *  Switch: '<S1>/Switch4'
-   */
-  if (FinalModel_B.AND && ((!tmp_1) && tmp_3)) {
-    FinalModel_DW.Delay_DSTATE += FinalModel_P.Constant6_Value;
-  } else {
-    FinalModel_DW.Delay_DSTATE = FinalModel_P.Constant5_Value;
-  }
-
-  /* End of Switch: '<S1>/Switch' */
-
-  /* MATLAB Function: '<S1>/MATLAB Function1' incorporates:
-   *  Constant: '<S1>/Constant'
-   *  Constant: '<S1>/Constant1'
-   *  Constant: '<S1>/Constant11'
-   *  Delay: '<S1>/Delay'
-   */
-  rtb_MultiportSwitch6 = 0.0;
-  rtb_left_motor = 0.0;
-  if (rtb_Switch3 == 0.0) {
-    if ((FinalModel_B.DigitalInput2 == 1.0) && (FinalModel_B.DigitalInput1 ==
-         0.0) && (FinalModel_B.DigitalInput == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant11_Value_k;
-      rtb_left_motor = FinalModel_P.Constant11_Value_k;
-    } else if ((FinalModel_B.DigitalInput2 == 1.0) &&
-               (FinalModel_B.DigitalInput1 == 0.0) && (FinalModel_B.DigitalInput
-                == 0.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
-      rtb_left_motor = FinalModel_P.Constant_Value_f;
-    } else if ((FinalModel_B.DigitalInput2 == 1.0) &&
-               (FinalModel_B.DigitalInput1 == 1.0) && (FinalModel_B.DigitalInput
-                == 0.0)) {
-      rtb_MultiportSwitch6 = -FinalModel_P.Constant_Value_f / 2.0;
-      rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
-    } else if ((FinalModel_B.DigitalInput2 == 0.0) &&
-               (FinalModel_B.DigitalInput1 == 0.0) && (FinalModel_B.DigitalInput
-                == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f;
-      rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
-    } else if ((FinalModel_B.DigitalInput2 == 0.0) &&
-               (FinalModel_B.DigitalInput1 == 1.0) && (FinalModel_B.DigitalInput
-                == 1.0)) {
-      rtb_MultiportSwitch6 = FinalModel_P.Constant_Value_f / 2.0;
-      rtb_left_motor = -FinalModel_P.Constant_Value_f / 2.0;
-    } else if (FinalModel_DW.Delay_DSTATE < 25.0) {
-      rtb_left_motor = FinalModel_P.Constant1_Value_j;
-      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
-    } else if ((FinalModel_DW.Delay_DSTATE >= 25.0) &&
-               (FinalModel_DW.Delay_DSTATE < 75.0)) {
-      rtb_left_motor = -FinalModel_P.Constant1_Value_j;
-      rtb_MultiportSwitch6 = FinalModel_P.Constant1_Value_j;
-    } else if ((FinalModel_DW.Delay_DSTATE >= 75.0) &&
-               (FinalModel_DW.Delay_DSTATE < 100.0)) {
-      rtb_left_motor = FinalModel_P.Constant1_Value_j;
-      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
+    if ((!tmp_1) && tmp_3 && ((!tmp_2) && tmp_0)) {
+      rtb_Sum = FinalModel_DW.Delay_DSTATE + FinalModel_P.Constant6_Value;
     } else {
-      rtb_left_motor = -FinalModel_P.Constant1_Value_j;
-      rtb_MultiportSwitch6 = -FinalModel_P.Constant1_Value_j;
+      rtb_Sum = FinalModel_P.Constant5_Value;
     }
-  }
 
-  /* End of MATLAB Function: '<S1>/MATLAB Function1' */
+    /* End of Switch: '<S1>/Switch' */
+
+    /* MATLAB Function: '<S1>/MATLAB Function1' incorporates:
+     *  Constant: '<S1>/Constant'
+     *  Constant: '<S1>/Constant1'
+     *  Constant: '<S1>/Constant11'
+     *  Constant: '<S1>/Constant12'
+     *  MATLABSystem: '<S1>/Digital Input'
+     *  MATLABSystem: '<S1>/Digital Input1'
+     *  MATLABSystem: '<S1>/Digital Input2'
+     */
+    FinalModel_B.right_motor = 0.0;
+    rtb_left_motor = 0.0;
+    if (FinalModel_P.Constant12_Value_g == 0.0) {
+      tmp_1 = ((rtb_Direction == 1.0) && (rtb_Switch3 == 0.0));
+      if (tmp_1 && (rtb_MultiportSwitch6 == 1.0)) {
+        FinalModel_B.right_motor = FinalModel_P.Constant11_Value_k;
+        rtb_left_motor = FinalModel_P.Constant11_Value_k;
+      } else if (tmp_1 && (rtb_MultiportSwitch6 == 0.0)) {
+        FinalModel_B.right_motor = FinalModel_P.Constant_Value_f / 2.0;
+        rtb_left_motor = FinalModel_P.Constant_Value_f;
+      } else if ((rtb_Direction == 1.0) && (rtb_Switch3 == 1.0) &&
+                 (rtb_MultiportSwitch6 == 0.0)) {
+        FinalModel_B.right_motor = -FinalModel_P.Constant_Value_f / 2.0;
+        rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
+      } else if ((rtb_Direction == 0.0) && (rtb_Switch3 == 0.0) &&
+                 (rtb_MultiportSwitch6 == 1.0)) {
+        FinalModel_B.right_motor = FinalModel_P.Constant_Value_f;
+        rtb_left_motor = FinalModel_P.Constant_Value_f / 2.0;
+      } else if ((rtb_Direction == 0.0) && (rtb_Switch3 == 1.0) &&
+                 (rtb_MultiportSwitch6 == 1.0)) {
+        FinalModel_B.right_motor = FinalModel_P.Constant_Value_f / 2.0;
+        rtb_left_motor = -FinalModel_P.Constant_Value_f / 2.0;
+      } else if (rtb_Sum < 25.0) {
+        FinalModel_B.right_motor = -FinalModel_P.Constant1_Value_j;
+        rtb_left_motor = FinalModel_P.Constant1_Value_j;
+      } else if ((rtb_Sum >= 25.0) && (rtb_Sum < 75.0)) {
+        FinalModel_B.right_motor = FinalModel_P.Constant1_Value_j;
+        rtb_left_motor = -FinalModel_P.Constant1_Value_j;
+      } else if ((rtb_Sum >= 75.0) && (rtb_Sum < 100.0)) {
+        FinalModel_B.right_motor = -FinalModel_P.Constant1_Value_j;
+        rtb_left_motor = FinalModel_P.Constant1_Value_j;
+      } else if ((!(rtb_Sum >= 100.0)) || (!(rtb_Sum < 105.0))) {
+        rtb_left_motor = -FinalModel_P.Constant1_Value_j;
+        FinalModel_B.right_motor = -FinalModel_P.Constant1_Value_j;
+      }
+    }
+
+    /* End of MATLAB Function: '<S1>/MATLAB Function1' */
+  }
 
   /* MATLABSystem: '<Root>/Gamepad Button10' */
-  tmp = joystickGetDigital(1, 8, 2);
+  FinalModel_B.MultiportSwitch = joystickGetDigital(1, 8, 2);
 
   /* Chart: '<S8>/Chart' incorporates:
    *  MATLABSystem: '<Root>/Gamepad Button10'
    */
-  FinalModel_Chart(tmp, &FinalModel_B.output, &FinalModel_DW.sf_Chart_j,
-                   &FinalModel_P.sf_Chart_j);
+  FinalModel_Chart(FinalModel_B.MultiportSwitch, &FinalModel_B.output,
+                   &FinalModel_DW.sf_Chart_j, &FinalModel_P.sf_Chart_j);
 
   /* Switch: '<Root>/Switch' incorporates:
    *  Constant: '<Root>/Fast Speed'
    *  Constant: '<Root>/Slow Speed'
    */
   if (FinalModel_B.output > FinalModel_P.Switch_Threshold_l) {
-    rtb_Switch3 = FinalModel_P.SlowSpeed_Value;
+    rtb_MultiportSwitch6 = FinalModel_P.SlowSpeed_Value;
   } else {
-    rtb_Switch3 = FinalModel_P.FastSpeed_Value;
+    rtb_MultiportSwitch6 = FinalModel_P.FastSpeed_Value;
   }
 
   /* End of Switch: '<Root>/Switch' */
 
   /* MATLABSystem: '<Root>/Gamepad Joystick2' */
-  y = joystickGetAnalog(1, 2);
+  rtb_Switch3 = joystickGetAnalog(1, 2);
 
   /* MATLABSystem: '<Root>/Gamepad Button11' */
-  tmp = joystickGetDigital(1, 8, 8);
+  FinalModel_B.MultiportSwitch = joystickGetDigital(1, 8, 8);
 
   /* Chart: '<S3>/Chart' incorporates:
    *  MATLABSystem: '<Root>/Gamepad Button11'
    */
-  FinalModel_Chart(tmp, &FinalModel_B.output_e, &FinalModel_DW.sf_Chart,
-                   &FinalModel_P.sf_Chart);
+  FinalModel_Chart(FinalModel_B.MultiportSwitch, &FinalModel_B.output_e,
+                   &FinalModel_DW.sf_Chart, &FinalModel_P.sf_Chart);
 
   /* Switch: '<Root>/Switch1' incorporates:
    *  Constant: '<Root>/Direction 1'
@@ -932,7 +927,7 @@ void FinalModel_step(void)
   /* End of Switch: '<Root>/Switch1' */
 
   /* MATLABSystem: '<Root>/Gamepad Joystick1' */
-  FinalModel_B.rtb_GamepadJoystick1_m = joystickGetAnalog(1, 3);
+  y = joystickGetAnalog(1, 3);
 
   /* MultiPortSwitch: '<S2>/Multiport Switch1' incorporates:
    *  Constant: '<S2>/Idle'
@@ -947,30 +942,31 @@ void FinalModel_step(void)
      *  MATLABSystem: '<Root>/Gamepad Joystick2'
      */
     if (rtb_Direction > FinalModel_P.Switch_Threshold) {
-      tmp = FinalModel_P.Gain_Gain * FinalModel_B.rtb_GamepadJoystick1_m;
+      FinalModel_B.MultiportSwitch = FinalModel_P.Gain_Gain * y;
     } else {
-      tmp = y;
+      FinalModel_B.MultiportSwitch = rtb_Switch3;
     }
 
-    rtb_MultiportSwitch6 = tmp * rtb_Switch3;
+    FinalModel_B.MultiportSwitch *= rtb_MultiportSwitch6;
     break;
 
    case 2:
-    rtb_MultiportSwitch6 = 0.0;
+    FinalModel_B.MultiportSwitch = 0.0;
     break;
 
    case 3:
+    FinalModel_B.MultiportSwitch = FinalModel_B.right_motor;
     break;
 
    default:
-    rtb_MultiportSwitch6 = FinalModel_P.Idle_Value;
+    FinalModel_B.MultiportSwitch = FinalModel_P.Idle_Value;
     break;
   }
 
   /* End of MultiPortSwitch: '<S2>/Multiport Switch1' */
 
   /* Gain: '<Root>/Gain1' */
-  rtb_MultiportSwitch6 *= FinalModel_P.Gain1_Gain_h;
+  FinalModel_B.MultiportSwitch *= FinalModel_P.Gain1_Gain_h;
 
   /* MATLABSystem: '<Root>/Large Motor 2' */
   if (FinalModel_DW.obj_g.scaleFactor != FinalModel_P.LargeMotor2_scaleFactor) {
@@ -985,26 +981,29 @@ void FinalModel_step(void)
     FinalModel_DW.obj_g.TunablePropsChanged = false;
   }
 
-  if (rtb_MultiportSwitch6 > 127.0) {
-    rtb_MultiportSwitch6 = 127.0;
-  } else if (rtb_MultiportSwitch6 < -128.0) {
-    rtb_MultiportSwitch6 = -128.0;
+  if (FinalModel_B.MultiportSwitch > 127.0) {
+    FinalModel_B.MultiportSwitch = 127.0;
+  } else if (FinalModel_B.MultiportSwitch < -128.0) {
+    FinalModel_B.MultiportSwitch = -128.0;
   }
 
-  tmp = rt_roundd_snf(rtb_MultiportSwitch6);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(FinalModel_B.MultiportSwitch);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(3, tmp_0);
+  motorSet(3, tmp);
 
   /* End of MATLABSystem: '<Root>/Large Motor 2' */
+  if (FinalModel_M->Timing.TaskCounters.TID[1] == 0) {
+    /* Gain: '<S1>/Gain' */
+    FinalModel_B.Gain = FinalModel_P.Gain_Gain_n * rtb_left_motor;
+  }
 
   /* MultiPortSwitch: '<S2>/Multiport Switch' incorporates:
    *  Constant: '<S2>/Idle'
-   *  Gain: '<S1>/Gain'
    *  Gain: '<S4>/Gain6'
    *  Product: '<S4>/Product'
    *  Switch: '<S4>/Switch1'
@@ -1016,30 +1015,30 @@ void FinalModel_step(void)
      *  MATLABSystem: '<Root>/Gamepad Joystick2'
      */
     if (rtb_Direction > FinalModel_P.Switch1_Threshold) {
-      FinalModel_B.rtb_GamepadJoystick1_m = FinalModel_P.Gain1_Gain * y;
+      y = FinalModel_P.Gain1_Gain * rtb_Switch3;
     }
 
-    rtb_MultiportSwitch6 = FinalModel_B.rtb_GamepadJoystick1_m * rtb_Switch3 *
+    FinalModel_B.MultiportSwitch = y * rtb_MultiportSwitch6 *
       FinalModel_P.Gain6_Gain;
     break;
 
    case 2:
-    rtb_MultiportSwitch6 = 0.0;
+    FinalModel_B.MultiportSwitch = 0.0;
     break;
 
    case 3:
-    rtb_MultiportSwitch6 = FinalModel_P.Gain_Gain_n * rtb_left_motor;
+    FinalModel_B.MultiportSwitch = FinalModel_B.Gain;
     break;
 
    default:
-    rtb_MultiportSwitch6 = FinalModel_P.Idle_Value;
+    FinalModel_B.MultiportSwitch = FinalModel_P.Idle_Value;
     break;
   }
 
   /* End of MultiPortSwitch: '<S2>/Multiport Switch' */
 
   /* Gain: '<Root>/Gain' */
-  FinalModel_B.MinMax = FinalModel_P.Gain_Gain_nz * rtb_MultiportSwitch6;
+  rtb_left_motor = FinalModel_P.Gain_Gain_nz * FinalModel_B.MultiportSwitch;
 
   /* MATLABSystem: '<Root>/Large Motor 1' */
   if (FinalModel_DW.obj_p.scaleFactor != FinalModel_P.LargeMotor1_scaleFactor) {
@@ -1054,20 +1053,20 @@ void FinalModel_step(void)
     FinalModel_DW.obj_p.TunablePropsChanged = false;
   }
 
-  if (FinalModel_B.MinMax > 127.0) {
-    FinalModel_B.MinMax = 127.0;
-  } else if (FinalModel_B.MinMax < -128.0) {
-    FinalModel_B.MinMax = -128.0;
+  if (rtb_left_motor > 127.0) {
+    rtb_left_motor = 127.0;
+  } else if (rtb_left_motor < -128.0) {
+    rtb_left_motor = -128.0;
   }
 
-  tmp = rt_roundd_snf(FinalModel_B.MinMax);
-  if (tmp < 2.147483648E+9) {
-    tmp_0 = (int32_T)tmp;
+  FinalModel_B.MultiportSwitch = rt_roundd_snf(rtb_left_motor);
+  if (FinalModel_B.MultiportSwitch < 2.147483648E+9) {
+    tmp = (int32_T)FinalModel_B.MultiportSwitch;
   } else {
-    tmp_0 = MAX_int32_T;
+    tmp = MAX_int32_T;
   }
 
-  motorSet(2, tmp_0);
+  motorSet(2, tmp);
 
   /* End of MATLABSystem: '<Root>/Large Motor 1' */
 
@@ -1079,6 +1078,11 @@ void FinalModel_step(void)
 
   /* MATLABSystem: '<Root>/Gamepad Joystick' */
   joystickGetAnalog(1, 4);
+  if (FinalModel_M->Timing.TaskCounters.TID[1] == 0) {
+    /* Update for Delay: '<S1>/Delay' */
+    FinalModel_DW.Delay_DSTATE = rtb_Sum;
+  }
+
   rate_scheduler();
 }
 

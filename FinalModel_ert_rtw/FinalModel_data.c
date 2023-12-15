@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.65
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
+ * C/C++ source code generated on : Thu Dec 14 19:41:36 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -91,6 +91,11 @@ P_FinalModel_T FinalModel_P = {
    */
   200.0,
 
+  /* Expression: -1
+   * Referenced by: '<S2>/Gain'
+   */
+  -1.0,
+
   /* Expression: 60
    * Referenced by: '<S4>/Gripper Up Speed'
    */
@@ -133,11 +138,6 @@ P_FinalModel_T FinalModel_P = {
 
   /* Expression: -1
    * Referenced by: '<S4>/Gain6'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<S1>/Gain'
    */
   -1.0,
 
@@ -341,25 +341,30 @@ P_FinalModel_T FinalModel_P = {
    */
   1.0,
 
-  /* Expression: 3
-   * Referenced by: '<Root>/Constant15'
+  /* Expression: 0
+   * Referenced by: '<S1>/Constant12'
    */
-  3.0,
+  0.0,
 
-  /* Expression: 60
+  /* Expression: 0.0
+   * Referenced by: '<S1>/Delay'
+   */
+  0.0,
+
+  /* Expression: 70
    * Referenced by: '<S1>/Constant'
    */
-  60.0,
+  70.0,
 
   /* Expression: 45
    * Referenced by: '<S1>/Constant1'
    */
   45.0,
 
-  /* Expression: 60
+  /* Expression: 50
    * Referenced by: '<S1>/Constant11'
    */
-  60.0,
+  50.0,
 
   /* Expression: 3
    * Referenced by: '<S1>/Switch1'
@@ -378,11 +383,6 @@ P_FinalModel_T FinalModel_P = {
 
   /* Expression: 0
    * Referenced by: '<S1>/Switch4'
-   */
-  0.0,
-
-  /* Expression: 0.0
-   * Referenced by: '<S1>/Delay'
    */
   0.0,
 
@@ -418,6 +418,11 @@ P_FinalModel_T FinalModel_P = {
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain1'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<S1>/Gain'
    */
   -1.0,
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'FinalModel'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.65
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Fri Dec  8 13:26:38 2023
+ * C/C++ source code generated on : Thu Dec 14 19:41:36 2023
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -50,14 +50,12 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T Gain;                         /* '<S1>/Gain' */
   real_T output;                       /* '<S8>/Chart' */
   real_T output_e;                     /* '<S3>/Chart' */
-  real_T DigitalInput2;                /* '<S1>/Digital Input2' */
-  real_T DigitalInput1;                /* '<S1>/Digital Input1' */
-  real_T DigitalInput;                 /* '<S1>/Digital Input' */
-  real_T rtb_GamepadJoystick1_m;
+  real_T right_motor;                  /* '<S1>/MATLAB Function1' */
   real_T MinMax;                       /* '<S6>/MinMax' */
-  boolean_T AND;                       /* '<S1>/AND' */
+  real_T MultiportSwitch;              /* '<S2>/Multiport Switch' */
 } B_FinalModel_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -131,6 +129,9 @@ struct P_FinalModel_T_ {
   real_T Switch11_Threshold;           /* Expression: 200
                                         * Referenced by: '<S4>/Switch11'
                                         */
+  real_T Gain_Gain_a;                  /* Expression: -1
+                                        * Referenced by: '<S2>/Gain'
+                                        */
   real_T GripperUpSpeed_Value;         /* Expression: 60
                                         * Referenced by: '<S4>/Gripper Up Speed'
                                         */
@@ -157,9 +158,6 @@ struct P_FinalModel_T_ {
                                         */
   real_T Gain6_Gain;                   /* Expression: -1
                                         * Referenced by: '<S4>/Gain6'
-                                        */
-  real_T Gain_Gain_n;                  /* Expression: -1
-                                        * Referenced by: '<S1>/Gain'
                                         */
   real_T LargeMotor1_scaleFactor;      /* Expression: 1/13.5
                                         * Referenced by: '<Root>/Large Motor 1'
@@ -281,16 +279,19 @@ struct P_FinalModel_T_ {
   real_T Constant4_Value_p;            /* Expression: 1
                                         * Referenced by: '<S1>/Constant4'
                                         */
-  real_T Constant15_Value;             /* Expression: 3
-                                        * Referenced by: '<Root>/Constant15'
+  real_T Constant12_Value_g;           /* Expression: 0
+                                        * Referenced by: '<S1>/Constant12'
                                         */
-  real_T Constant_Value_f;             /* Expression: 60
+  real_T Delay_InitialCondition;       /* Expression: 0.0
+                                        * Referenced by: '<S1>/Delay'
+                                        */
+  real_T Constant_Value_f;             /* Expression: 70
                                         * Referenced by: '<S1>/Constant'
                                         */
   real_T Constant1_Value_j;            /* Expression: 45
                                         * Referenced by: '<S1>/Constant1'
                                         */
-  real_T Constant11_Value_k;           /* Expression: 60
+  real_T Constant11_Value_k;           /* Expression: 50
                                         * Referenced by: '<S1>/Constant11'
                                         */
   real_T Switch1_Threshold_n;          /* Expression: 3
@@ -304,9 +305,6 @@ struct P_FinalModel_T_ {
                                         */
   real_T Switch4_Threshold_l;          /* Expression: 0
                                         * Referenced by: '<S1>/Switch4'
-                                        */
-  real_T Delay_InitialCondition;       /* Expression: 0.0
-                                        * Referenced by: '<S1>/Delay'
                                         */
   real_T Constant4_Value_i0;           /* Expression: 0
                                         * Referenced by: '<Root>/Constant4'
@@ -328,6 +326,9 @@ struct P_FinalModel_T_ {
                                         */
   real_T Gain1_Gain_h;                 /* Expression: -1
                                         * Referenced by: '<Root>/Gain1'
+                                        */
+  real_T Gain_Gain_n;                  /* Expression: -1
+                                        * Referenced by: '<S1>/Gain'
                                         */
   real_T Gain_Gain_nz;                 /* Expression: -1
                                         * Referenced by: '<Root>/Gain'
@@ -402,6 +403,8 @@ extern volatile boolean_T runModel;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S1>/Scope' : Unused code path elimination
+ * Block '<S1>/Scope1' : Unused code path elimination
+ * Block '<Root>/Constant15' : Unused code path elimination
  * Block '<Root>/Constant16' : Unused code path elimination
  * Block '<Root>/Drive' : Unused code path elimination
  * Block '<S5>/Gain' : Unused code path elimination
@@ -411,6 +414,7 @@ extern volatile boolean_T runModel;
  * Block '<S5>/Product1' : Unused code path elimination
  * Block '<S5>/Switch' : Unused code path elimination
  * Block '<S5>/Switch1' : Unused code path elimination
+ * Block '<Root>/Subtract' : Unused code path elimination
  * Block '<Root>/Tools' : Unused code path elimination
  */
 
